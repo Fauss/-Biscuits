@@ -1,24 +1,9 @@
-// 基础框架
-function Biscuit(){}
-Biscuit.prototype = {
-    extend:function(tar,source){
-        for(var i in source){
-            tar[i]=source[i];
-        }
-        return tar;
-    }
+// use 原型对象封装框架（工具包）必须实例化
+function Biscuit(){   
 }
-var $ = new Biscuit();
 
-
-// 通用模板
-$.extend($,{
-    
-})
-
-// 事件模块
-$.extend($,{
-        // 绑定事件
+Biscuit.prototype = {
+    // 绑定事件
     on:function(id,type,fn){
         var dom = document.getElementById(id);
         if(document.addEventListener){
@@ -40,16 +25,7 @@ $.extend($,{
             }
         }      
     }
-})
+}
 
-// 选择模块
-$.extend($,{
-        // id选择器
-    $id:function(id){
-        return document.getElementById(id)
-    },
-    //标签选择器
-    $tag:function(tag){
-        return document.getElementByTagName(tag)
-    },
-})
+// 使用对象中的方法必须先实例化（如何实例化：new）
+var $ = new Biscuit()

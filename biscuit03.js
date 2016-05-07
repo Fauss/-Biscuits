@@ -1,24 +1,34 @@
-// 基础框架
-function Biscuit(){}
-Biscuit.prototype = {
+// 基本框架
+var biscuit={
+
+    // 拷贝一个对象中的方法和属性给另一个对象
     extend:function(tar,source){
-        for(var i in source){
-            tar[i]=source[i];
+        for(var i in sourse){
+            tar[i] = source[i];
         }
         return tar;
     }
 }
-var $ = new Biscuit();
 
+// 基本模块
+biscuit.extend(biscuit,{
+    // 这里面放的是下面这些模块可能用到的
+    each:function(){},
+    map:function(){}
+})
 
-// 通用模板
-$.extend($,{
-    
+// 数据类型判断
+biscuit.extend(biscuit,{
+     // 数据类型
+    isString:function(){},
+    isNumber:function(){},
+    isArray:function(){},
+    isObj:function(){},
 })
 
 // 事件模块
-$.extend($,{
-        // 绑定事件
+biscuit.extend(biscuit,{
+      // 绑定事件
     on:function(id,type,fn){
         var dom = document.getElementById(id);
         if(document.addEventListener){
@@ -39,12 +49,12 @@ $.extend($,{
                dom.detachEvent('on'+type,fn)  
             }
         }      
-    }
+    },
 })
 
 // 选择模块
-$.extend($,{
-        // id选择器
+biscuit.extend(biscuit,{
+    // id选择器
     $id:function(id){
         return document.getElementById(id)
     },
@@ -52,4 +62,9 @@ $.extend($,{
     $tag:function(tag){
         return document.getElementByTagName(tag)
     },
+})
+
+// 属性内容模块
+biscuit.extend(biscuit,{
+    
 })
