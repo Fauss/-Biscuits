@@ -24,8 +24,39 @@ Biscuit.prototype = {
                dom.detachEvent('on'+type,fn)  
             }
         }      
+    },
+    // 获取事件
+    getEvent:function(e){
+        var event;
+        // if(e){
+        //     event = e;
+        // }else{
+        //     event = window.event;
+        // }
+        // return event;
+        // return e?e:window.event;
+        return e||window.event;
+    }, 
+
+    // 获取目标元素
+    getTarget(event){
+        var e = getEvent(event);
+        return e.target||e.srcElement;
+    },
+    // 阻止冒泡
+    stopPropagation:function(event){
+        var event = $$.getEvent(evet);
+        if(event,stopPropagation){
+            event.stopPropagation()
+        }else{
+            event.cancelBubble = true;
+        }
     }
 }
+
+
+
+
 
 // 使用对象中的方法必须先实例化（如何实例化：new）
 var $ = new Biscuit()
