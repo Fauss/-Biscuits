@@ -1,3 +1,4 @@
+
 // use json对象封装框架(if you use 字面量形式来封装框架，就不需要实例化)
 
 var biscuit={

@@ -1,5 +1,5 @@
 // 基础框架
-//定义一个对象，名字就是 YC
+//定义一个对象，名字就是YC
 var YC = function(){}
 YC.prototype = {
     extend:function(tar,source){
@@ -26,7 +26,7 @@ YC.extend(YC,{
         if(document.addEventListener){
             dom.addEventLister(type,fn,false)
         }else{
-            if(dom.attchEvent){
+            if(document.attchEvent){
                 dom.attchEvent('on'+type,fn)
             }
         }
@@ -34,15 +34,34 @@ YC.extend(YC,{
     // 解除绑定
     un:function(id,type,fn){
         var dom = document.getElementById(id);
-        if(dom.removeEventListener){
+        if(document.removeEventListener){
             dom.removeEventListener(type,fn,false)
         }else{
-            if(dom.detachEvent){
+            if(document.detachEvent){
                dom.detachEvent('on'+type,fn)  
             }
         }      
     },
- 
+    // 阻止冒泡
+    stopPropagation:function(event){
+        var event = YC.getEvent(evet);
+        if(event,stopPropagation){
+            event.stopPropagation()
+        }else{
+            event.cancelBubble = true;
+        }
+    },
+    // XMLHttpRequest请求事件
+    request:function(){
+        var request;
+        if(XMLHttpRequest){
+            // 标准写法
+            request = new XMLHttpRequest;
+        }else{
+            // IE5、IE6写法
+            request = new ActiveObject("Microsoft.XMLHTTP");
+        }
+    }
 
 })
 
@@ -69,7 +88,7 @@ YC.extend(YC,{
         return e||window.event;
     }, 
      // 获取目标元素
-    getTarget(event){
+    getTarget:function(event){
         var e = getEvent(event);
         return e.target||e.srcElement;
     }

@@ -1,4 +1,4 @@
-// use 原型对象封装框架（工具包）必须实例化
+// 使用原型对象封装框架（工具包）必须实例化
 function Biscuit(){   
 }
 
@@ -39,7 +39,7 @@ Biscuit.prototype = {
     }, 
 
     // 获取目标元素
-    getTarget(event){
+    getTarget:function(event){
         var e = getEvent(event);
         return e.target||e.srcElement;
     },
@@ -50,6 +50,17 @@ Biscuit.prototype = {
             event.stopPropagation()
         }else{
             event.cancelBubble = true;
+        }
+    },
+      // XMLHttpRequest请求事件
+    request:function(){
+        var request;
+        if(XMLHttpRequest){
+            // 标准写法
+            request = new XMLHttpRequest;
+        }else{
+            // IE5、IE6写法
+            request = new ActiveObject("Microsoft.XMLHTTP");
         }
     }
 }

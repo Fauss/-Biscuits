@@ -38,6 +38,7 @@ biscuit.extend(biscuit,{
                 dom.attchEvent('on'+type,fn)
             }
         }
+        
     },
     // 解除绑定
     un:function(id,type,fn){
@@ -50,6 +51,17 @@ biscuit.extend(biscuit,{
             }
         }      
     },
+    // XMLHttpRequest请求事件
+    request:function(){
+        var request;
+        if(XMLHttpRequest){
+            // 标准写法
+            request = new XMLHttpRequest;
+        }else{
+            // IE5、IE6写法
+            request = new ActiveObject("Microsoft.XMLHTTP");
+        }
+    }
 })
 
 // 选择模块
